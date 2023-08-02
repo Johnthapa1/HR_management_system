@@ -1,23 +1,24 @@
 from django.db import models
 
 class EmployeeDetail(models.Model):
-    employee_id = models.PositiveIntegerField()
+    employee_code = models.PositiveIntegerField(primary_key=True, auto_created=True)
     employee_name = models.CharField(max_length=30)
     employee_designation = models.CharField(max_length=50)
     employee_contact = models.CharField(max_length=10)
+    employee_image = models.FileField(upload_to="images/employeeImage", blank=True, null=True)
     
     class Meta:
         db_table = "employee_details"
-        ordering = ["employee_name"]
+        ordering = ["-employee_name"]
 
 class AttendanceRecord(models.Model):
     employee = models.ForeignKey(EmployeeDetail, on_delete=models.CASCADE)
     date = models.DateField()
-    entry_time = models.TimeField()
-    exit_time = models.TimeField(null=True, blank=True)
+    entry_time = models.DateTimeField(auto_now_add=True)
+    exit_time = models.DateTimeField(null=True, blank=True, auto_now_add=True)
     office_time = models.DurationField()
     break_hour = models.DurationField()
 
     class Meta:
         db_table = "attendance_records"
-        ordering = ["date", "entry_time"]
+        ordering = ["-date", "entry_time"]
