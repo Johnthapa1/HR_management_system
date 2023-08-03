@@ -6,5 +6,18 @@ Employees | All Employee
 
 
 {% block content %}
-<h1>This is all employee page</h1>
+    <div class="container">
+       <div class="card p-5 mt-3">
+            {% if title %}
+                <h1>{{ title }}</h1>
+            {% else %}
+                <h1>This is all employee page</h1>
+                <hr>
+            {% endif %}
+            <form action="">
+                {{ form.as_p}}
+                <input type="submit" class="btn btn-sm btn-primary" value="Add Employee">
+            </form>
+        </div> 
+    </div>  
 {% endblock %}
