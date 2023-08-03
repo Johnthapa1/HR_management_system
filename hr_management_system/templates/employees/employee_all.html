@@ -1,7 +1,7 @@
 {% extends 'layouts/master.html' %}
 
 {% block title %}
-Employees | All Employee
+All Employee
 {% endblock %}
 
 
@@ -15,7 +15,7 @@ Employees | All Employee
                 <hr>
             {% endif %}
             <form action="">
-                {{ form.as_p}}
+                {{ employeeDetailForm.as_p}}
                 <input type="submit" class="btn btn-sm btn-primary" value="Add Employee">
             </form>
         </div> 

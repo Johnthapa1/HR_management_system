@@ -1,5 +1,5 @@
 from django import forms
-from Employees.models import EmployeeDetail, AttendanceRecord
+from Employees.models import EmployeeDetail, AttendanceRecord, EmployeeDepartment
 
 class EmployeeCreateForm(forms.ModelForm):
     class Meta:
@@ -12,6 +12,13 @@ class AttendanceRecordCreateForm(forms.ModelForm):
     class Meta:
         fields = ("employee", "date")
         model = AttendanceRecord
+        
+class EmployeeDepartmentCreateForm(forms.ModelForm):
+    
+    class Meta:
+        fields = ("department_name",)
+        model = EmployeeDepartment
+
         
 
 
