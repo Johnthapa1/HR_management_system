@@ -14,7 +14,8 @@ All Employee
                 <h1>This is all employee page</h1>
                 <hr>
             {% endif %}
-            <form action="">
+            <form action="#">
+                {% csrf_token %}
                 {{ employeeDetailForm.as_p}}
                 <input type="submit" class="btn btn-sm btn-primary" value="Add Employee">
             </form>
