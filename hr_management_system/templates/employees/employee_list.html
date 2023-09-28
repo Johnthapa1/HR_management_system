@@ -1,0 +1,48 @@
+{% extends 'layouts/master.html' %}
+
+{% block title %}
+Employees | List
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="card p-5 mt-3">
+        <div class="card-header">
+            <h1>Employee List</h1>
+            <hr>
+            <table class="table table-hover mt-3">
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Employee Code</th>
+                        <th>Employee Name</th>
+                        <th>Employee Designation</th>
+                        <th>Employee Contact</th>
+                        <th>Employee Image</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for  val in data %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ val.employee_code }}</td>
+                        <td>{{ val.employee_name }}</td>
+                        <td>{{ val.employee_designation }}</td>
+                        <td>{{ val.employee_contact }}</td>
+                        <td>{{ val.employee_image }}</td>
+                         <td>
+                            <a href="{% url 'employee-show' val.id %}">Show</a>
+                            <a href="{% url 'employee-edit' val.id %}">Edit</a>
+                            <a href="{% url 'employee-delete' val.id %}">Delete</a>
+                        </td> 
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
