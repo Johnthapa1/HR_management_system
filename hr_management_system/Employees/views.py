@@ -41,17 +41,20 @@ def employee_list(request):
     context= {"data": list_of_employee }
     return render(request, 'employees/employee_list.html', context)
 
-# def employee_show(request, id):
-#     return render(request, 'employees/employee_show.html')
-def employee_show(request, id):
-    employee = get_object_or_404(EmployeeDetail, id=id)
-    return render(request, 'employees/employee_show.html', {'employee': employee})
+def employee_show(request, pk):
+    employee_obj= EmployeeDetail.objects.get(pk=pk)
+    context={"data": employee_obj}
+    return render(request, 'employees/employee_show.html', context)
 
-def employee_edit(request, id):
-    return render(request, 'employees/employee_edit.html')
 
-def employee_delete(request, id):
-    return redirect(request, 'employee_list')
+def employee_edit(request, pk):
+    employee_obj=EmployeeDetail.objects.get(pk=pk)
+    employee_update_form= EmployeeCreateForm(data=employee_obj)
+    context={"form": employee_update_form}
+    return render(request, 'employees/employee_edit.html', context)
+
+def employee_delete(request, pk):
+    return redirect('employee_list')
 
 def employee_attendance(request):
     return render(request,'employees/employee_attendance.html')

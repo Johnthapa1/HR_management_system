@@ -12,6 +12,7 @@ class EmployeeDesignation(models.Model):
         ordering = ["-designation_name"]
         
 class EmployeeDetail(models.Model):
+    
     employee_code = models.PositiveIntegerField(primary_key=True, auto_created=True)
     employee_name = models.CharField(max_length=30)
     employee_designation = models.ForeignKey(EmployeeDesignation, on_delete=models.CASCADE)

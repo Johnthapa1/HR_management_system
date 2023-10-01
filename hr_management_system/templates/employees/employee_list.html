@@ -8,6 +8,7 @@ Employees | List
 {% block content %}
 <div class="container">
     <div class="card p-5 mt-3">
+        <a href="{% url 'employee_add' %}" class= "btn btn-sm btn-primary mb-3 mt-3"> Add New Employee</a>
         <div class="card-header">
             <h1>Employee List</h1>
             <hr>
@@ -17,8 +18,6 @@ Employees | List
                         <th>S.No</th>
                         <th>Employee Code</th>
                         <th>Employee Name</th>
-                        <th>Employee Designation</th>
-                        <th>Employee Contact</th>
                         <th>Employee Image</th>
                         <th>Action</th>
 
@@ -30,13 +29,12 @@ Employees | List
                         <td>{{ forloop.counter }}</td>
                         <td>{{ val.employee_code }}</td>
                         <td>{{ val.employee_name }}</td>
-                        <td>{{ val.employee_designation }}</td>
-                        <td>{{ val.employee_contact }}</td>
                         <td>{{ val.employee_image }}</td>
-                         <td>
-                            <a href="{% url 'employee-show' val.id %}">Show</a>
-                            <a href="{% url 'employee-edit' val.id %}">Edit</a>
-                            <a href="{% url 'employee-delete' val.id %}">Delete</a>
+                        <td>
+                            <a href="{% url 'employee_show' val.pk %}" class="btn btn-sm btn-outline-primary">Show</a>
+                            <a href="{% url 'employee_edit' val.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
+                            <a href="{% url 'employee_delete' val.pk %}" class="btn btn-sm btn-outline-primary">Delete</a>
+                            
                         </td> 
                     </tr>
                     {% endfor %}
