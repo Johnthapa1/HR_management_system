@@ -49,12 +49,27 @@ def employee_show(request, pk):
 
 def employee_edit(request, pk):
     employee_obj=EmployeeDetail.objects.get(pk=pk)
-    employee_update_form= EmployeeCreateForm(data=employee_obj)
-    context={"form": employee_update_form}
+    designation_obj=EmployeeDesignation.objects.all()
+    context={"data": employee_obj, "employee_designation": designation_obj}
+    
+    if request.method == "POST":
+        employee_obj= EmployeeCreateForm(data=request.POST, instance=employee_obj)
+        if employee_obj.is_valid():
+            employee_obj.save()
+            return redirect("employee_show", pk)   #redirecting to url having pk or id
+         
     return render(request, 'employees/employee_edit.html', context)
 
 def employee_delete(request, pk):
-    return redirect('employee_list')
+    employee_obj= EmployeeDetail.objects.get(pk=pk)
+    
+    if request.method=='POST':
+        employee_obj.delete()
+        return redirect('employee_list')
+    
+    else:
+        context = {"data": employee_obj}
+        return render(request, 'employees/employee_delete_confirm.html', context)
 
 def employee_attendance(request):
     return render(request,'employees/employee_attendance.html')
