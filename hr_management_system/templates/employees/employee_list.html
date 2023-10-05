@@ -7,8 +7,9 @@ Employees | List
 
 {% block content %}
 <div class="container">
+    <a href="{% url 'employee_add' %}" class= "btn btn-sm btn-primary mb-3 mt-3"> Add New Employee</a>
     <div class="card p-5 mt-3">
-        <a href="{% url 'employee_add' %}" class= "btn btn-sm btn-primary mb-3 mt-3"> Add New Employee</a>
+        
         <div class="card-header">
             <h1>Employee List</h1>
             <hr>

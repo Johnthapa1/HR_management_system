@@ -69,7 +69,7 @@ def employee_delete(request, pk):
     
     else:
         context = {"data": employee_obj}
-        return render(request, 'employees/employee_delete_confirm.html', context)
+        return render(request, 'employees/employee_delete.html', context)
 
 def employee_attendance(request):
     return render(request,'employees/employee_attendance.html')
