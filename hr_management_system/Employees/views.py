@@ -36,6 +36,7 @@ def employee_add(request):
          
     return render(request, 'employees/employee_add.html', context)
 
+
 def employee_list(request):
     list_of_employee= EmployeeDetail.objects.all()
     context= {"data": list_of_employee }

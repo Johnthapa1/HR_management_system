@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.views import View
@@ -10,7 +10,20 @@ class LoginView(View):
         return render(request, 'accounts/login.html')
 
     def post(self, request):
-        pass
+        username= request.POST.get('username')
+        password= request.POST.get('password')
+        # authenticating the user
+        try:
+            user= authenticate(request, username=username, password=password)
+        except User.DoesNotExist as error:
+            print(error)
+            
+        if user is not None:
+            login(request, user)
+            return redirect('employee_list')
+        else:
+            return redirect('login')
+            
 
 class RegisterView(View):
     def get(self, request):
@@ -28,3 +41,7 @@ class RegisterView(View):
             user.first_name=f_name
             user.last_name=l_name
             user.is_active= True
+            user.save()
+            login(request, user)
+            return redirect('login')
+        return redirect('register')
