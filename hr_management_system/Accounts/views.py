@@ -13,14 +13,12 @@ class LoginView(View):
         username= request.POST.get('username')
         password= request.POST.get('password')
         # authenticating the user
-        try:
-            user= authenticate(request, username=username, password=password)
-        except User.DoesNotExist as error:
-            print(error)
-            
+        
+        user= authenticate(request, username=username, password=password)
+          
         if user is not None:
             login(request, user)
-            return redirect('employee_list')
+            return redirect('employee_add')
         else:
             return redirect('login')
             
@@ -42,6 +40,6 @@ class RegisterView(View):
             user.last_name=l_name
             user.is_active= True
             user.save()
-            login(request, user)
+            
             return redirect('login')
         return redirect('register')
