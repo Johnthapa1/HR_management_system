@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from Employees.forms import EmployeeCreateForm, AttendanceRecordCreateForm, EmployeeDesignationCreateForm
 from Employees.models import EmployeeDesignation, EmployeeDetail, AttendanceRecord
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 # Create your views here.
 # def employee_departments(request):
@@ -33,6 +34,7 @@ def employee_add(request):
         if employee_add.is_valid():
             employee_add.employee_designation=designation_obj
             employee_add.save()
+            messages.success(request, "Added succesfully")
             return redirect("employee_list")
         return redirect("employee_add")
          
@@ -60,15 +62,18 @@ def employee_edit(request, pk):
         employee_obj= EmployeeCreateForm(data=request.POST, instance=employee_obj)
         if employee_obj.is_valid():
             employee_obj.save()
+            messages.success(request, "Updated succesfully")
             return redirect("employee_show", pk)   #redirecting to url having pk or id
          
     return render(request, 'employees/employee_edit.html', context)
+
 @login_required(login_url='/login/')
 def employee_delete(request, pk):
     employee_obj= EmployeeDetail.objects.get(pk=pk)
     
     if request.method=='POST':
         employee_obj.delete()
+        messages.success(request, "Deleted sucessfully")
         return redirect('employee_list')
     
     else:

@@ -12,6 +12,7 @@
   </head>
   <body>
         <div class="container">
+          {% include 'partials/_message.html' %}
             <div class="card p-5 mt-2">
                 <h1>Login with your account</h1>
                 <hr>
@@ -23,7 +24,7 @@
                     </div>
                     <div class="form-group mb-2">
                         <label for="password">Password</label>
-                        <input type="password" name="username" class="form-control mt-2">
+                        <input type="password" name="password" class="form-control mt-2">
                     </div>
                     <input type="submit" value="Login" class="btn btn-sm col-12 btn-primary">
                 </form>
