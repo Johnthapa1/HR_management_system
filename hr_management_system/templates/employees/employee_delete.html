@@ -8,13 +8,13 @@ Confirm Deletion
 <div class="container">
     {% include 'partials/_message.html' %}
     <div class="card p-5 mt-3">
-        <h1>Confirm Deletion</h1>
-        <p>Do you want to delete this employee?</p>
+        <h1 class="text-danger">Confirm Deletion</h1>
+        <p class="text-muted">Do you want to delete this employee?</p>
         <form method="post">
             {% csrf_token %}
             
-            <button type="submit">Confirm</button>
-            <button type="button" onclick="window.location.href='{% url 'employee_list' %}'">Cancel</button>
+            <button type="submit" class="btn btn-danger">Confirm</button>
+            <button type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'employee_list' %}'">Cancel</button>
         </form>
     </div>
 </div>

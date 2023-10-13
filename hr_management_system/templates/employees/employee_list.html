@@ -8,13 +8,11 @@ Employees | List
 {% block content %}
 <div class="container">
     {% include 'partials/_message.html' %}
-    <a href="{% url 'employee_add' %}" class= "btn btn-sm btn-primary mb-3 mt-3"> Add New Employee</a>
+    <a href="{% url 'employee_add' %}" class="btn btn-sm btn-primary mb-3 mt-3">Add New Employee</a>
     <div class="card p-5 mt-3">
-        
         <div class="card-header">
-            <h1>Employee List</h1>
-            <hr>
-            <table class="table table-hover mt-3">
+            <h1 class="mb-4">Employee List</h1>
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>S.No</th>
@@ -22,22 +20,20 @@ Employees | List
                         <th>Employee Name</th>
                         <th>Employee Image</th>
                         <th>Action</th>
-
                     </tr>
                 </thead>
                 <tbody>
-                    {% for  val in data %}
+                    {% for val in data %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
                         <td>{{ val.employee_code }}</td>
                         <td>{{ val.employee_name }}</td>
                         <td>{{ val.employee_image }}</td>
                         <td>
-                            <a href="{% url 'employee_show' val.pk %}" class="btn btn-sm btn-outline-primary">Show</a>
-                            <a href="{% url 'employee_edit' val.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
-                            <a href="{% url 'employee_delete' val.pk %}" class="btn btn-sm btn-outline-primary">Delete</a>
-                            
-                        </td> 
+                            <a href="{% url 'employee_show' val.pk %}" class="btn btn-sm btn-outline-primary mr-2">Show</a>
+                            <a href="{% url 'employee_edit' val.pk %}" class="btn btn-sm btn-outline-primary mr-2">Edit</a>
+                            <a href="{% url 'employee_delete' val.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>

@@ -52,6 +52,7 @@ def employee_show(request, pk):
     context={"data": employee_obj}
     return render(request, 'employees/employee_show.html', context)
 
+
 @login_required(login_url='/login/')
 def employee_edit(request, pk):
     employee_obj=EmployeeDetail.objects.get(pk=pk)

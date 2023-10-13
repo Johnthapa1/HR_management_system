@@ -4,27 +4,24 @@
 Employees | Show
 {% endblock %}
 
-
 {% block content %}
 <div class="container">
     {% include 'partials/_message.html' %}
-    <a href="{% url 'employee_list' %}" class= "btn btn-sm btn-primary mb-3 mt-3"> Back</a>
+    <a href="{% url 'employee_list' %}" class="btn btn-sm btn-primary mb-3 mt-3">Back</a>
     <div class="card mb-3" style="max-width: 540px;">
-        
         <div class="row g-0">
             <div class="col-md-4">
-                <img src="..." class="img-fluid rounded-start" alt="...">
+                <img src="..." class="img-fluid rounded-start" alt="Employee Image">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                  <h3 class="card-title">Employee Name: <i>{{ data.employee_name }}</i></h3>
-                  <h3>Employee Code: <i>{{ data.employee_code }}</i></h3>
-                  <h3>Employee Designation: <i>{{ data.employee_designation }}</i></h3>
-                  <h3>Employee Contact: <i>{{ data.employee_contact }}</i></h3>
+                    <h2 class="card-title text-primary">Employee Name: <i>{{ data.employee_name }}</i></h2>
+                    <h3>Employee Code: <i>{{ data.employee_code }}</i></h3>
+                    <h3>Employee Designation: <i>{{ data.employee_designation }}</i></h3>
+                    <h3>Employee Contact: <i>{{ data.employee_contact }}</i></h3>
                 </div>
             </div>
         </div>
     </div>
-    
 </div>
 {% endblock %}

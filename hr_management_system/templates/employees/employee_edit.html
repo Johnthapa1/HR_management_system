@@ -4,43 +4,45 @@
 Employees | Edit
 {% endblock %}
 
-
 {% block content %}
-<div class="conatiner">
+<div class="container">
     {% include 'partials/_message.html' %}
-    <a href="{% url 'employee_list' %}" class= "btn btn-sm btn-primary mb-3 mt-3"> Back</a>
+    <a href="{% url 'employee_list' %}" class="btn btn-sm btn-primary mb-3 mt-3">Back</a>
     <div class="card p-5 mt-3">
-        <h1>Update employee details...</h1>
+        <h1 class="mb-4">Update Employee Details</h1>
         <hr>
+
         <form action="{% url 'employee_edit' data.pk %}" method="post">
             {% csrf_token %}
-            <div class="form-group mb-2">
+
+            <div class="form-group mb-4">
                 <label for="employee_code">Employee Code</label>
                 <input type="number" name="employee_code" value="{{ data.employee_code }}" class="form-control">
             </div>
-            <div class="form-group mb-2">
+
+            <div class="form-group mb-4">
                 <label for="employee_name">Employee Name</label>
                 <input type="text" name="employee_name" value="{{ data.employee_name }}" class="form-control">
             </div>
-            <div class="form-group mb-2">
-            <label for="employee_designation">Employee Designation</label>
-                <select name="employee_designation" class="form-control mt-2">
-                    <option value="0">Select Designations</option>
+
+            <div class="form-group mb-4">
+                <label for="employee_designation">Employee Designation</label>
+                <select name="employee_designation" class="form-control">
+                    <option value="0">Select Designation</option>
                     {% for val in employee_designation %}
-                    <option value="{{ val.pk }}" class="form-control">{{ val.designation_name }}</option>
-                    {% endfor %}  
+                    <option value="{{ val.pk }}">{{ val.designation_name }}</option>
+                    {% endfor %}
                 </select>
             </div>
-            <div class="form-group mb-2">
+
+            <div class="form-group mb-4">
                 <label for="employee_contact">Employee Contact</label>
-                <input type="number" name="employee_contact" value="{{ data.employee_contact }}" class="form-control mt-2">
+                <input type="number" name="employee_contact" value="{{ data.employee_contact }}" class="form-control">
             </div>
-            
+
             <input type="submit" value="Update" class="btn btn-primary btn-sm">
         </form>
         <hr>
-
-      
     </div>
 </div>
 {% endblock %}
