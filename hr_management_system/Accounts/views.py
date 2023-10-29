@@ -4,23 +4,23 @@ from django.contrib.auth import login, logout, authenticate
 from django.views import View
 from django.contrib import messages
 from Employees.models import EmployeeDetail
-
+from django.contrib.auth.decorators import login_required
+from django.db.models import Count
 
 class UsersView(View):
     def get(self, request):
-        user_list= User.objects.all()
-        user_count= user_list.count()
-        
+        total_user= User.objects.count()
+       
         context={
-            'user_count': user_count,
+            'total_user': total_user,
         }
         
         return render(request, 'dashboard.html', context)
+    
 
 class DashboardView(View):
     def get(self, request):
-        employee_list = EmployeeDetail.objects.all()
-        employee_count = employee_list.count()
+        employee_count = EmployeeDetail.objects.count()
 
         context = {
             'employee_count': employee_count,
