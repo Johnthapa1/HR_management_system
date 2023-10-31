@@ -1,0 +1,35 @@
+/* Sidebar Styles */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #920f0f; /* Background color for the sidebar */
+    color: #c71212; /* Text color */
+    padding: 20px;
+    overflow-y: auto; /* Add a scrollbar if the content overflows the sidebar */
+    z-index: 1;
+}
+
+#sidebar .navbar-brand {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #00bcd4; /* Brand color */
+}
+
+#sidebar .nav-link {
+    color: #fff; /* Link color */
+}
+
+#sidebar .nav-link:hover {
+    color: #00bcd4; /* Hover color */
+}
+
+/* Main Content Styles */
+main {
+    margin-left: 250px; /* Set the margin to accommodate the sidebar width */
+    padding: 15px;
+}
+
+

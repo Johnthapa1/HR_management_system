@@ -4,6 +4,11 @@
 Employees | List
 {% endblock %}
 
+{% block custom_css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/employee_list.css' %}">
+{% endblock %}
+
 
 {% block content %}
 <div class="container">
@@ -23,7 +28,7 @@ Employees | List
                     </tr>
                 </thead>
                 <tbody>
-                    {% for val in data %}
+                    {% for val in page_obj %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
                         <td>{{ val.employee_code }}</td>
@@ -38,7 +43,24 @@ Employees | List
                     {% endfor %}
                 </tbody>
             </table>
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ page_obj.previous_page_number }}"><i class="fa-solid fa-arrow-left"></i></a>
+                    {% endif %}
+            
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+            
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}"><i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
         </div>
     </div>
 </div>
-{% endblock %}
+{% endblock %} 

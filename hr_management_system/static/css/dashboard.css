@@ -1,0 +1,54 @@
+/* Custom CSS for the HRMS Dashboard */
+
+/* Body Styles */
+body {
+    background-color: #fcfcfc;
+    font-family: Arial, sans-serif;
+}
+
+/* Card Styles */
+.card {
+    background-color: #ddd6f1;
+    border: 1px solid #e0e0e0;
+    border-radius: 7px;
+    box-shadow: 2px 2px 5px #aaa;
+    padding: 20px;
+    margin: 10px;
+}
+
+/* Heading Styles */
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Card Title Styles */
+.card h4 {
+    font-size: 18px;
+    margin-top: 0;
+}
+
+/* Text Styles */
+p {
+    font-size: 16px;
+}
+
+/* Link Styles */
+.card a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+/* Section-Specific Styles */
+.employee-card {
+    background-color: #FFDB58; /* Gold */
+}
+
+.accounts-card {
+    background-color: #4DA0FF; /* Royal Blue */
+}
+
+.projects-card {
+    background-color: #54FF54; /* Lime Green */
+}

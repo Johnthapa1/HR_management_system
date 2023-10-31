@@ -3,6 +3,7 @@ from Employees.forms import EmployeeCreateForm, AttendanceRecordCreateForm, Empl
 from Employees.models import EmployeeDesignation, EmployeeDetail, AttendanceRecord
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 # Create your views here.
 # def employee_departments(request):
@@ -43,7 +44,10 @@ def employee_add(request):
 @login_required(login_url='/login/')
 def employee_list(request):
     list_of_employee= EmployeeDetail.objects.all()
-    context= {"data": list_of_employee }
+    paginator = Paginator(list_of_employee, 10)  # 10 data in one page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context= {"page_obj": page_obj }
     return render(request, 'employees/employee_list.html', context)
 
 @login_required(login_url='/login/')

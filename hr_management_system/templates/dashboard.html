@@ -4,33 +4,37 @@
 HRMS | Dashboard
 {% endblock %}
 
+
+
 {% block custom_css %}
+{% load static %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js" integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="container">
     <div class="card p-5 mt-3">
-        <h1 style="color: #333; font-size: 24px;">Dashboard</h1>
+        <h1>Dashboard</h1>
         <hr>
 
         <div class="row">
-            <div class="card p-5 col-4" style="background-color: #fff; border: 1px solid #e0e0e0; border-radius: 5px; box-shadow: 2px 2px 5px #aaa;">
+            <div class="card p-5 col-4">
                 <h4><i class="fas fa-user-tie"></i> Employees</h4>
                 <p>Total employees: {{ employee_count }}</p>
-                <a href="{% url 'employee_list' %}" style="text-decoration: none; color: #007bff;">View Details</a>
+                <a href="{% url 'employee_list' %}">View Details</a>
             </div>
 
-            <div class="card p-5 col-4" style="background-color: #fff; border: 1px solid #e0e0e0; border-radius: 5px; box-shadow: 2px 2px 5px #aaa;">
+            <div class="card p-5 col-4">
                 <h4><i class="fas fa-id-card"></i> Accounts</h4>
                 <p>Total accounts: {{ total_user }}</p>
-                <a href="{% url 'employee_list' %}" style="text-decoration: none; color: #007bff;">View Details</a>
+                <a href="{% url 'employee_list' %}">View Details</a>
             </div>
 
-            <div class="card p-5 col-4" style="background-color: #fff; border: 1px solid #e0e0e0; border-radius: 5px; box-shadow: 2px 2px 5px #aaa;">
+            <div class="card p-5 col-4">
                 <h4><i class="fas fa-file"></i> Projects</h4>
                 <p>Total projects: 20</p>
-                <a href="{% url 'employee_list' %}" style="text-decoration: none; color: #007bff;">View Details</a>
+                <a href="{% url 'employee_list' %}">View Details</a>
             </div>
         </div>
     </div>

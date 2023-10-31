@@ -1,0 +1,53 @@
+/* Add these styles to your custom CSS file */
+/* Adjust as needed for your design preferences */
+
+/* Page container */
+.container {
+    padding: 20px;
+}
+
+/* Page title */
+.card-header h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Employee list table */
+.table {
+    width: 100%;
+}
+
+/* Table header */
+.table th {
+    background-color: #007bff; /* Header background color */
+    color: #fff; /* Header text color */
+}
+
+/* Table header, table cells, and links */
+.table th,
+.table td,
+.btn {
+    border: 1px solid #dee2e6; /* Border color for cells and buttons */
+}
+
+/* Style buttons */
+.btn {
+    margin-right: 10px; /* Add space between buttons */
+}
+
+/* Pagination links */
+.pagination a {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+/* Style current page number */
+.pagination .current {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    border: 1px solid #007bff;
+}
