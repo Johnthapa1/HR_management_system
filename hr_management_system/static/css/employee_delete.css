@@ -1,0 +1,64 @@
+/* Add custom CSS for Confirm Deletion page */
+.container {
+    padding: 20px;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    max-width: 540px;
+    margin: 0 auto;
+}
+
+.card h1 {
+    font-size: 24px;
+    color: #ff4545; /* Red color for the title */
+    margin-top: 0;
+}
+
+.card p {
+    font-size: 16px;
+    margin-bottom: 1.5rem;
+}
+
+.card .btn {
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+/* Style the "Confirm" button */
+.btn-danger {
+    background-color: #ff4545;
+    color: #fff;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #d13e3e;
+}
+
+/* Style the "Cancel" button */
+.btn-secondary {
+    background-color: #ccc;
+    color: #000;
+    border: none;
+    margin-left: 10px;
+}
+
+.btn-secondary:hover {
+    background-color: #bbb;
+}
+
+/* Add some spacing between content elements */
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card img {
+        border-radius: 10px 10px 0 0;
+    }
+}

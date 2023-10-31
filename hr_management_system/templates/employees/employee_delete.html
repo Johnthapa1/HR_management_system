@@ -4,6 +4,11 @@
 Confirm Deletion
 {% endblock %}
 
+{% block custom_css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/employee_delete.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="container">
     {% include 'partials/_message.html' %}
