@@ -1,5 +1,7 @@
 {% extends 'layouts/master.html' %}
 
+{% load static %}
+
 {% block title %}
 Employees | List
 {% endblock %}
@@ -32,7 +34,7 @@ Employees | List
                         <td>{{ forloop.counter }}</td>
                         <td>{{ val.employee_code }}</td>
                         <td>{{ val.employee_name }}</td>
-                        <td>{{ val.employee_image }}</td>
+                        <td><img src="{{ val.employee_image.url }}" width="100" height="100"></td>
                         <td>
                             <a href="{% url 'employee_show' val.pk %}" class="btn btn-sm btn-outline-primary mr-2">Show</a>
                             <a href="{% url 'employee_edit' val.pk %}" class="btn btn-sm btn-outline-primary mr-2">Edit</a>

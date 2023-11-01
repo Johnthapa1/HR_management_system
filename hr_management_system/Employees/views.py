@@ -31,7 +31,7 @@ def employee_add(request):
         # employee_add_obj.save()
         
         #method 2- storing data with form class object
-        employee_add=EmployeeCreateForm(request.POST)
+        employee_add=EmployeeCreateForm(request.POST, request.FILES)
         if employee_add.is_valid():
             employee_add.employee_designation=designation_obj
             employee_add.save()

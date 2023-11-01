@@ -20,7 +20,7 @@ All Employee
             <h1 class="text-primary">This is the All Employee page</h1>
             <hr>
         {% endif %}
-        <form action="{% url 'employee_add' %}" method="POST">
+        <form action="{% url 'employee_add' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group mb-3">
                 {{ employeeDetailForm.as_p}}

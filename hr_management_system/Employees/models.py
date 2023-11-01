@@ -17,7 +17,7 @@ class EmployeeDetail(models.Model):
     employee_name = models.CharField(max_length=30)
     employee_designation = models.ForeignKey(EmployeeDesignation, on_delete=models.CASCADE)
     employee_contact = models.CharField(max_length=10)
-    employee_image = models.FileField(upload_to="images/employeeImage", blank=True, null=True)
+    employee_image = models.FileField(upload_to="images/employeeImage/", blank=True, null=True)
     is_active = models.BooleanField(default=True)
     
     def __str__(self):

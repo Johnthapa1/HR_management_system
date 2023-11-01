@@ -5,7 +5,7 @@ class EmployeeCreateForm(forms.ModelForm):
     class Meta:
         # fields = ("__all__",) #for all attributes
         
-        fields = ("employee_code", "employee_name","employee_designation", "employee_contact")
+        fields = ("employee_code", "employee_name","employee_designation", "employee_contact", "employee_image")
         model = EmployeeDetail
         
 class AttendanceRecordCreateForm(forms.ModelForm):

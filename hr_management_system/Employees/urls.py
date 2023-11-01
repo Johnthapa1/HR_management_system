@@ -1,5 +1,7 @@
 from django.urls import path
 from Employees import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('list/', views.employee_list, name='employee_list'),
@@ -12,3 +14,6 @@ urlpatterns = [
     path('designations/', views.employee_designations, name='employee_designations'),
     path('holidays/', views.employee_holidays, name='employee_holidays')
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT) 
