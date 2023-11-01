@@ -16,6 +16,7 @@ HRMS | Dashboard
 <div class="container">
     <div class="card p-5 mt-3">
         <h1>Dashboard</h1>
+        <button id="btn" onclick="changeText()">Click me</button>
         <hr>
 
         <div class="row">
@@ -39,4 +40,8 @@ HRMS | Dashboard
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block custom_js %}
+<script src="{% static 'js/scripts.js' %}"></script>
 {% endblock %}
