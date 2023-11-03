@@ -141,3 +141,13 @@ MESSAGE_TAGS={
     messages.ERROR: "danger"
 }
 
+# email configuration
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+EMAIL_HOST= 'smtp.gmail.com' #google email server
+EMAIL_HOST_USER= 'thapajohn2057@gmail.com' #host account email address
+EMAIL_HOST_PASSWORD= 'uexl wwks yvlg ouzy' #app password generated from gmail account
+EMAIL_PORT= 587 # port number of TLS
+EMAIL_USE_TLS= True  # using TLS for data encryption
+     

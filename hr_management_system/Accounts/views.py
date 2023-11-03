@@ -6,6 +6,8 @@ from django.contrib import messages
 from Employees.models import EmployeeDetail
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
+from django.core.mail import send_mail
+from django.db.utils import IntegrityError
 
 class UsersView(View):
     def get(self, request):
@@ -67,10 +69,20 @@ class RegisterView(View):
         password = request.POST.get('password')
         
         # Create a new user and handle password hashing
-        user = User.objects.create_user(username=username, email=email, password=password)
-        user.first_name = f_name
-        user.last_name = l_name
-        user.is_active = True
-        user.save()
-            
-        return redirect('login')
+        try: 
+            user = User.objects.create_user(username=username, email=email, password=password)
+            user.first_name = f_name
+            user.last_name = l_name
+            user.is_active = True
+            user.save()
+            send_mail(
+                'Account Registration',  # subject
+                'Your account has been created succesfully', #message
+                'thapajohn2057@gmail.com', #sender email address
+                [user.email], #recipent address
+            )
+                
+            return redirect('login')
+        except IntegrityError:
+            messages.error(request, "Username already exists. Please choose a different username.")
+            return redirect('register')

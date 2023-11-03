@@ -12,27 +12,27 @@ Employees | Edit
 {% block content %}
 <div class="container">
     {% include 'partials/_message.html' %}
-    <a href="{% url 'employee_list' %}" class="btn btn-sm btn-primary mb-3 mt-3">Back</a>
-    <div class="card p-5 mt-3">
+    <a href="{% url 'employee_list' %}" class="btn btn-sm btn-primary my-3">Back</a>
+    <div class="card p-4 mt-3">
         <h1 class="mb-4">Update Employee Details</h1>
         <hr>
 
-        <form action="{% url 'employee_edit' data.pk %}" method="post">
+        <form action="{% url 'employee_edit' data.pk %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
 
             <div class="form-group mb-4">
                 <label for="employee_code">Employee Code</label>
-                <input type="number" name="employee_code" value="{{ data.employee_code }}" class="form-control">
+                <input type="number" name="employee_code" value="{{ data.employee_code }}" class="form-control" placeholder="Enter Employee Code" required>
             </div>
 
             <div class="form-group mb-4">
                 <label for="employee_name">Employee Name</label>
-                <input type="text" name="employee_name" value="{{ data.employee_name }}" class="form-control">
+                <input type="text" name="employee_name" value="{{ data.employee_name }}" class="form-control" placeholder="Enter Employee Name" required>
             </div>
 
             <div class="form-group mb-4">
                 <label for="employee_designation">Employee Designation</label>
-                <select name="employee_designation" class="form-control">
+                <select name="employee_designation" class="form-select">
                     <option value="0">Select Designation</option>
                     {% for val in employee_designation %}
                     <option value="{{ val.pk }}">{{ val.designation_name }}</option>
@@ -42,10 +42,16 @@ Employees | Edit
 
             <div class="form-group mb-4">
                 <label for="employee_contact">Employee Contact</label>
-                <input type="number" name="employee_contact" value="{{ data.employee_contact }}" class="form-control">
+                <input type="tel" name="employee_contact" value="{{ data.employee_contact }}" class="form-control" placeholder="Enter Contact Number" required maxlength="10">
             </div>
 
-            <input type="submit" value="Update" class="btn btn-primary btn-sm">
+            <div class="form-group mb-4">
+                <label for="employee_image">Employee Image</label>
+                <input type="file" name="employee_image" class="form-control-file" accept="image/*">
+                <img src="{{ data.employee_image.url }}" alt="Current Image" class="img-thumbnail mt-3" style="max-width: 100px;">
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-sm">Update</button>
         </form>
         <hr>
     </div>

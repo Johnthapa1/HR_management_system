@@ -64,7 +64,7 @@ def employee_edit(request, pk):
     context={"data": employee_obj, "employee_designation": designation_obj}
     
     if request.method == "POST":
-        employee_obj= EmployeeCreateForm(data=request.POST, instance=employee_obj)
+        employee_obj= EmployeeCreateForm(data=request.POST, instance=employee_obj, files=request.FILES)
         if employee_obj.is_valid():
             employee_obj.save()
             messages.success(request, "Updated succesfully")
