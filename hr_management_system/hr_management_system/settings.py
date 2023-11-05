@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Employees',
     'Project', 
-    'Accounts'
+    'Accounts',
+    'app_rest_api',
+    'rest_framework'
     
 ]
 
@@ -82,9 +84,18 @@ WSGI_APPLICATION = 'hr_management_system.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+    
+     'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'HRMS',
+        'HOST': 'localhost',  # or 127.0.0.1
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'PORT': 5432
     }
 }
 

@@ -12,17 +12,16 @@ class EmployeeDesignation(models.Model):
         ordering = ["-designation_name"]
         
 class EmployeeDetail(models.Model):
-    
-    employee_code = models.PositiveIntegerField(primary_key=True, auto_created=True)
+    employee_code = models.AutoField(primary_key=True)  # Use AutoField for an auto-incrementing primary key
     employee_name = models.CharField(max_length=30)
     employee_designation = models.ForeignKey(EmployeeDesignation, on_delete=models.CASCADE)
     employee_contact = models.CharField(max_length=10)
     employee_image = models.FileField(upload_to="images/employeeImage/", blank=True, null=True)
     is_active = models.BooleanField(default=True)
-    
+
     def __str__(self):
         return f"{self.employee_name} - {self.employee_designation}"
-    
+
     class Meta:
         db_table = "employee_details"
         ordering = ["-employee_name"]
