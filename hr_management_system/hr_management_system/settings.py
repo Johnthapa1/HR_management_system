@@ -161,4 +161,7 @@ EMAIL_HOST_USER= 'thapajohn2057@gmail.com' #host account email address
 EMAIL_HOST_PASSWORD= 'uexl wwks yvlg ouzy' #app password generated from gmail account
 EMAIL_PORT= 587 # port number of TLS
 EMAIL_USE_TLS= True  # using TLS for data encryption
+
+APPEND_SLASH = False
+
      
