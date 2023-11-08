@@ -4,6 +4,7 @@ from Employees.models import EmployeeDesignation, EmployeeDetail, AttendanceReco
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.db.models import Q
 
 # Create your views here.
 # def employee_departments(request):
@@ -43,11 +44,19 @@ def employee_add(request):
 
 @login_required(login_url='/login/')
 def employee_list(request):
-    list_of_employee= EmployeeDetail.objects.all()
+    search_name = request.GET.get('searchname')
+    list_of_employee = EmployeeDetail.objects.all()
+
+    if search_name:
+        list_of_employee = EmployeeDetail.objects.filter(
+            Q(employee_name__icontains=search_name)
+        )
+
     paginator = Paginator(list_of_employee, 10)  # 10 data in one page
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    context= {"page_obj": page_obj }
+
+    context = {"page_obj": page_obj, "search_name": search_name}
     return render(request, 'employees/employee_list.html', context)
 
 @login_required(login_url='/login/')
@@ -94,6 +103,10 @@ def employee_designations(request):
     context = {"employeeDesignationForm":employee_designation_create_form, "title": "Employee Designation" }
     return render(request, 'employees/employee_designations.html', context)
 
+@login_required(login_url='/login')
 def employee_holidays(request):
     return render(request, 'employees/employee_holidays.html')
 
+
+    
+        

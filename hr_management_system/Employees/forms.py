@@ -24,5 +24,8 @@ class EmployeeDesignationCreateForm(forms.ModelForm):
     class Meta:
         fields= ("designation_name",)
         model = EmployeeDesignation
+        
+
+        
 
 
