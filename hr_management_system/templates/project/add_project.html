@@ -1,0 +1,27 @@
+{% extends 'layouts/master.html' %}
+
+{% block title %}
+Project | Add
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="card p-5 mt-3">
+        {% if title %}
+            <h1 class="text-primary">{{ title }}</h1>
+        {% else %}
+            <h1 class="text-primary">This is the All Employee page</h1>
+            <hr>
+        {% endif %}
+        <form action="{% url 'add_project' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                {{ ProjectAddForm.as_p }}
+            </div>
+            <input type="submit" class="btn btn-primary btn-sm" value="Add Project">
+
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -36,7 +36,7 @@ def employee_add(request):
         if employee_add.is_valid():
             employee_add.employee_designation=designation_obj
             employee_add.save()
-            messages.success(request, "Added succesfully")
+            messages.success(request, " Employee Added succesfully")
             return redirect("employee_list")
         return redirect("employee_add")
          
