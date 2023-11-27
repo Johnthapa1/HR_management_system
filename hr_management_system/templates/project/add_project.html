@@ -4,9 +4,15 @@
 Project | Add
 {% endblock %}
 
+{% block custom_css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/employee_add.css' %}">
+{% endblock %}
+
 
 {% block content %}
 <div class="container">
+    {% include 'partials/_message.html' %}
     <div class="card p-5 mt-3">
         {% if title %}
             <h1 class="text-primary">{{ title }}</h1>
