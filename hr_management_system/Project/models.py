@@ -7,11 +7,11 @@ class AssignProject(models.Model):
     project_deadline = models.DateTimeField()
     assigned_hours = models.DecimalField(max_digits=5, decimal_places=2)
     assigned_to = models.ForeignKey(User, on_delete=models.CASCADE)
-    assigned_date = models.DateField()
+    assigned_date = models.DateTimeField()
     work_description = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.project_name
+        return f"{self.project_name} - Assigned to: {self.assigned_to.username}"
     
     class Meta:
         db_table = "assign_project"

@@ -17,7 +17,7 @@ Project | Add
         {% if title %}
             <h1 class="text-primary">{{ title }}</h1>
         {% else %}
-            <h1 class="text-primary">This is the All Employee page</h1>
+            <h1 class="text-primary">Add Project</h1>
             <hr>
         {% endif %}
         <form action="{% url 'add_project' %}" method="post" enctype="multipart/form-data">

@@ -14,9 +14,9 @@ def add_project(request):
 
     if request.method =="POST":
         project_name= request.POST.get('project_name')
-        project_deadlines= request.POSt.get('project_deadlines')
-        assigned_hours= request.POst.get('assigned_hours')
-        assigned_to= request.POSt.get('assigned_to')
+        project_deadlines= request.POST.get('project_deadlines')
+        assigned_hours= request.POST.get('assigned_hours')
+        assigned_to= request.POST.get('assigned_to')
         assigned_date= request.POST.get('assigned_date')
         work_description= request.POST.get("work_description)")
 
@@ -27,10 +27,10 @@ def add_project(request):
             return redirect("list_project")
         return redirect("add_project")
 
-    return render(request, 'project/add_project.html')
+    return render(request, 'project/add_project.html', context)
 
 @login_required(login_url='/login/')
-def project_list(request):
+def list_project(request):
     list_of_project= AssignProject.objects.all()
     
     paginator = Paginator(list_of_project, 10)  # 10 data in one page

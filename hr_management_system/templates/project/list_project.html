@@ -13,3 +13,60 @@ Project | List
 <link rel="stylesheet" href="{% static 'css/employee_list.css' %}">
 {% endblock %}
 
+{% block content %}
+<div class="container">
+    {% include 'partials/_message.html' %}
+    <a href="{% url 'add_project' %}" class="btn btn-sm btn-primary mb-3 mt-3">Add New Project</a>
+
+    <div class="card p-5 mt-3">
+        <div class="card-header">
+            <h1 class="mb-4">Project List</h1>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Project Name</th>
+                        <th>Deadline</th>
+                        <th>Assined Employee</th>
+                        <th>Assigned Hours</th>
+                        <th>Assigned Date</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for val in page_obj %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ val.project_name }}</td>
+                        <td>{{ val.project_deadline }}</td>
+                        <td>{{ val.assigned_to }}</td>
+                        <td>{{ val.assigned_hours }}</td>
+                        <td>{{ val.assigned_date }}</td>
+                        <td>{{ work_description }}</td>
+                    
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ page_obj.previous_page_number }}"><i class="fa-solid fa-arrow-left"></i></a>
+                    {% endif %}
+            
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+            
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}"><i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
