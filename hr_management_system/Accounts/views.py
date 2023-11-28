@@ -4,6 +4,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.views import View
 from django.contrib import messages
 from Employees.models import EmployeeDetail
+from Project.models import AssignProject
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 from django.core.mail import send_mail
@@ -28,6 +29,16 @@ class DashboardView(View):
             'employee_count': employee_count,
         }
         
+        return render(request, 'dashboard.html', context)
+    
+class ProjectView(View):
+    def get(self, request):
+        project_count= AssignProject.objects.count()
+    
+        context = {
+            'project_count': project_count,
+        }
+            
         return render(request, 'dashboard.html', context)
     
 
